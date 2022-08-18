@@ -1,0 +1,109 @@
+:root {
+    --firstColor: #faf7e1;
+    --secondColor: #8d694d;
+}
+
+
+/* ####################             body               #################### */
+/* body {
+    background-color: var(--firstColor);
+} */
+
+
+/* ####################             контейнер               #################### */
+.container {
+    background: var(--firstColor);
+    display: grid;
+    min-height: 100vh;
+    grid-template-rows: 50px 1fr 100px;        
+}
+.container > :nth-child(2n-1) {    /* обращаемся к нечетным дочерним элементам */
+    background: var(--secondColor);
+ }
+
+
+/* ####################             header               #################### */
+.header {
+    display: grid;
+    align-content: center;
+    justify-content: stretch;
+}
+.header_cont {
+    display: grid;
+    grid-template-columns: 100px 1fr 100px 100px 100px;
+    gap: 10px;
+    color: white;
+    font-weight: bold;
+    font-family: sans-serif;
+    width: 1000px;
+    margin: auto;
+}
+.header_cont > div {
+    display: grid;
+    align-content: center;
+    justify-content: center;
+}
+.header_cont > :nth-child(2){
+    display: grid;
+    align-content: center;
+}
+.reg_in {
+    grid-template-columns: 65px 5px 30px;
+}
+.searchBook {
+    width: 100%;
+}
+#searchBookInput {
+    width: 100%;
+    padding: 5px;
+}
+.reg_in > a {
+    text-decoration: none;
+    color: white;
+}
+
+
+/* ####################             signup               #################### */
+.signup {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+}
+.signupWindow {
+    display: grid;
+    width: 400px; 
+    gap: 10px; 
+    padding: 20px;
+    border: 1px solid var(--secondColor);
+    border-radius: 5px;
+    background: #8d694d24;
+}   
+.signupWindow > h3 {
+    text-align: center;
+}   
+#signupForm > div {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 5px;
+    align-items: center;
+}
+#signupForm > div > input {
+    border-radius: 5px;
+    padding: 5px;
+    border: 1px solid var(--secondColor);
+    background: var(--firstColor);
+}
+#signupSend {    
+    width: 100%;
+    margin-top: 10px;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid #c9c9c9;
+}
+
+
+
+
+/* ####################             footer               #################### */
