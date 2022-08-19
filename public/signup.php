@@ -64,8 +64,7 @@
                         <span>Ведите пароль: </span><input type="password" name="password" id="password" placeholder="password">
 
                         <span>Подтвердите пароль: </span><input type="password" name="password2" id="password2" placeholder="password2">
-                    </div>
-                    
+                    </div>                    
 
                     <input type="submit" id="signupSend" value="Sign Up" name="send" disabled>
                 </form>
@@ -77,7 +76,7 @@
     <script>
         //при вводе в input создаем ajax-запрос для проверки свободен или занят login
         login.oninput=()=>{
-            if(login.value.length>2) {
+            if( login.value.length>2 ) {
                 $.ajax({
                     type:"post",//$_POST['searchLogin']
                     url:"/system/searchLogin.php",
@@ -92,50 +91,45 @@
             else {
                 searchLogin.innerHTML=null;
             }
+            valid();
         }
-    </script>
     
-   
-   <script>
     let error=true;
     signupForm.onsubmit=()=>{
-        if(login.value.length<3) {
-            alert("login < 3 символов");
-            return false;
-        }
+        
         if(password.value==""){
-            alert("введите пароль 1");
+            searchLogin.innerHTML="введите пароль 1";
             return false;
         }
         if(password2.value==""){
-            alert("введите пароль 2");
+            searchLogin.innerHTML="введите пароль 2";
             return false;
         }
         if(password.value!==password2.value){
-            alert("пароли не совпадают");
+            searchLogin.innerHTML="пароли не совпадают";
             return false;
         }
-       
     }
 // /////////////////доделать валидациюдл остальных полей
     function valid() {
         if(login.value.length<3) {
             login.style.border="1px solid red";
+            searchLogin.innerHTML="login < 3 символов";
             error=true;
         }
         else {
             login.style.border="1px solid green";
             error=false;
         }
+        
         if(error==false) {  //если ошибок нет, убираем disabled с кнопки отправки формы
-        signup.disabled=false;
+            signupSend.disabled=false;
         }
         else {
-            signup.disabled=true;
+            signupSend.disabled=true;
         }
     
     }
-    login.oninput=valid;//при наборе в input включается valid()
 
     
    </script>
