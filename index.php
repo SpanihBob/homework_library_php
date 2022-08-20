@@ -2,6 +2,7 @@
     $path = $_SERVER['DOCUMENT_ROOT'];
     require_once "$path/system/db.php"; //подкл. к БД
     session_start();                    //вкл. сессию
+    // session_destroy();
 
 
     // .........    вспомним суперглобальные константы      ............  //
@@ -34,7 +35,13 @@
         </header> 
         <main>
             <?
-                if(@$_SERVER['REDIRECT_URL']=="" or $_SERVER['REDIRECT_URL']=="/main")://другой способ записи ша удыу без скобок
+                if($_SESSION["reg_in"]==2): require_once "$path/public/login.php";
+                elseif($_SESSION["reg_in"]==1): require_once "$path/public/signup.php";
+                elseif($_SESSION["reg_in"]==3): require_once "$path/public/main.php";
+                elseif($_SESSION["reg_in"]==4): require_once "$path/public/profile.php";
+                elseif($_SESSION["reg_in"]==5): require_once "$path/public/debt.php";
+
+                elseif(@$_SERVER['REDIRECT_URL']=="" or $_SERVER['REDIRECT_URL']=="/main")://другой способ записи if else без скобок
                     require_once "$path/public/main.php";
             
                 elseif($_SERVER['REDIRECT_URL']=="/login"):
@@ -46,6 +53,8 @@
                 else:
                     require_once "$path/public/404.php";
                 endif;
+
+                
             ?>
         </main>
         <footer class="footer">

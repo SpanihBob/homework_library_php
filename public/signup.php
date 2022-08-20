@@ -95,7 +95,33 @@
         }
     
     let error=true;
-    signupForm.onsubmit=()=>{
+    signupForm.onsubmit=()=>{               ///ДОДЕЛАТЬ ВАЛИДАЦИЮ ПО ИМЯ ФАМИЛИЯ ДАТА РОЖДЕНИЯ!!!!!!!!!!!!!!!!!!!!!!!!
+
+        // login.oninput=()=>{
+        //     if( login.value.length>2 ) {
+        //         $.ajax({
+        //             type:"post",//$_POST['searchLogin']
+        //             url:"/system/searchLogin.php",
+        //             data: {
+        //                 "searchLogin":login.value,
+        //                 "searchName":visitor_name.value,
+        //                 "searchLastName":visitor_last_name.value,
+        //             },
+        //             success:data=>{
+        //                 searchLogin.innerHTML=data;
+        //             }
+        //         })
+        //     }
+        //     else {
+        //         searchLogin.innerHTML=null;
+        //     }
+        //     valid();
+        // }
+
+
+
+
+
         
         if(password.value==""){
             searchLogin.innerHTML="введите пароль 1";
@@ -127,8 +153,7 @@
         }
         else {
             signupSend.disabled=true;
-        }
-    
+        }    
     }
 
     

@@ -38,17 +38,24 @@
     width: 1000px;
     margin: auto;
 }
-.header_cont > div {
+.header_cont > button {
     display: grid;
     align-content: center;
     justify-content: center;
+    color: white;
+    border: none;
+    background: none;
+    font-weight: 600;
+    cursor: pointer;
 }
 .header_cont > :nth-child(2){
     display: grid;
     align-content: center;
 }
-.reg_in {
+#reg_in {
+    display: grid;
     grid-template-columns: 65px 5px 30px;
+    align-content: center;
 }
 .searchBook {
     width: 100%;
@@ -57,9 +64,12 @@
     width: 100%;
     padding: 5px;
 }
-.reg_in > a {
-    text-decoration: none;
+#reg_in > button {
     color: white;
+    border: none;
+    background: none;
+    font-weight: 600;
+    cursor: pointer;
 }
 
 
