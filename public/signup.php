@@ -114,6 +114,10 @@
                 searchLogin.innerHTML="Введите имя";
                 return false;
             }
+            if(visitor_name.value=="") {
+                searchLogin.innerHTML="Введите имя";
+                return false;
+            }
             if(visitor_last_name.value=="") {
                 searchLogin.innerHTML="Введите фамилию";
                 return false;
