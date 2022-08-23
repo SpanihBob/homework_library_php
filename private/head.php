@@ -15,5 +15,5 @@
 	<!--  local jquery --- установите jq в папку либс, для примера ниже -->
     <script src="/js/jq.js"  ></script>
 	 <script src="/js/master.js" charset="utf-8"></script> <!--Скрипт работает после загрузки дом, чтоб изменить, уберите defer -->
-	 <script src="/js/menu_point.js"></script>
+	 <!-- <script src="/js/menu_point.js"></script> -->
 </head>

@@ -25,42 +25,23 @@
     // echo "$arr1[name]";  //здесь будут проблемы с ковычками
     // echo "{$arr[3][1]}";//современный способ - переменные пишутся в {} - можно писать переменную как она есть
  
-    include_once "$path/private/head.php";  //                      #########   head  #########        
-?>
+    
+    if(@$_SERVER['REDIRECT_URL']=="" or $_SERVER['REDIRECT_URL']=="/main")://другой способ записи if else без скобок
+        require_once "$path/public/main.php";
 
-<body>
-    <div class="container">                        
-        <header class="header">
-            <? include_once "$path/private/header.php"; ?>  <!--        #########   header  #########    -->
-        </header> 
-        <main>
-            <?
-                if($_SESSION["reg_in"]==2): require_once "$path/public/login.php";
-                elseif($_SESSION["reg_in"]==1): require_once "$path/public/signup.php";
-                elseif($_SESSION["reg_in"]==3): require_once "$path/public/main.php";
-                elseif($_SESSION["reg_in"]==4): require_once "$path/public/profile.php";
-                elseif($_SESSION["reg_in"]==5): require_once "$path/public/debt.php";
-
-                elseif(@$_SERVER['REDIRECT_URL']=="" or $_SERVER['REDIRECT_URL']=="/main")://другой способ записи if else без скобок
-                    require_once "$path/public/main.php";
+    elseif($_SERVER['REDIRECT_URL']=="/login"):
+        require_once "$path/public/login.php";
+    
+    elseif($_SERVER['REDIRECT_URL']=="/signup"):
+        require_once "$path/public/signup.php";
+    
+    elseif($_SERVER['REDIRECT_URL']=="/profile"):
+        require_once "$path/public/profile.php";
+    
+    elseif($_SERVER['REDIRECT_URL']=="/debt"):
+        require_once "$path/public/debt.php";
             
-                elseif($_SERVER['REDIRECT_URL']=="/login"):
-                    require_once "$path/public/login.php";
-                
-                elseif($_SERVER['REDIRECT_URL']=="/signup"):
-                    require_once "$path/public/signup.php";
-                
-                else:
-                    require_once "$path/public/404.php";
-                endif;
-
-                
-            ?>
-        </main>
-        <footer class="footer">
-            <? include_once "$path/private/footer.php"?>
-        </footer>
-    </div>
-	
-</body>
-</html> 
+    else:
+        require_once "$path/public/404.php";
+    endif;                
+?>

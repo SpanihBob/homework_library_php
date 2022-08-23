@@ -1,26 +1,17 @@
 <?
-    if(isset($_GET['reg'])) $_SESSION['reg_in']=1;
-
-    if(isset($_GET['in'])) $_SESSION['reg_in']=2;
-
-    if(isset($_GET['logo'])) $_SESSION['reg_in']=3;
-
-    if(isset($_GET['profile'])) $_SESSION['reg_in']=4;
-
-    if(isset($_GET['debt'])) $_SESSION['reg_in']=5;
     
 ?>
 
-    <form class="header_cont">
-        <button class="logo" name="logo">Библиотека ДЗ</button>
-        <div action="" method="get" name="searchBook" class="searchBook" >
+    <div class="header_cont">
+        <a class="logo" href="/main">Библиотека ДЗ</a>
+        <form action="" method="get" name="searchBook" class="searchBook" >
             <input type="search" name="searchBookInput" id="searchBookInput">
-        </div>
+        </form>
         <div id="reg_in">
-            <button name="reg">Регистрация </button>
+            <a href="/signup">Регистрация </a>
             <span>/</span>
-            <button name="in"> Вход</button>
+            <a href="/login"> Вход</a>
         </div>
-        <button name="profile">Профиль</button>
-        <button name="debt">Задолжности</button>
-    </form>
+        <a href="/profile">Профиль</a>
+        <a href="/debt">Задолжности</a>
+</div>

@@ -38,13 +38,11 @@
     width: 1000px;
     margin: auto;
 }
-.header_cont > button {
+.header_cont > a {
     display: grid;
     align-content: center;
     justify-content: center;
     color: white;
-    border: none;
-    background: none;
     font-weight: 600;
     cursor: pointer;
 }
@@ -64,10 +62,8 @@
     width: 100%;
     padding: 5px;
 }
-#reg_in > button {
+#reg_in > a {
     color: white;
-    border: none;
-    background: none;
     font-weight: 600;
     cursor: pointer;
 }
