@@ -86,15 +86,44 @@
         
         
         <script>
-            //при вводе в input создаем ajax-запрос для проверки свободен или занят login
             let error=true;
-            login.oninput=()=>{
-                if( login.value.length>2 ) {
+            // ......................проверка на регулярку............................
+            let regesName = /[^A-Za-zА-ЯЁа-яё]/gi;
+            let regesDate = /\b((19[0-9][0-9])|(20[0-9][0-9]))-((0[1-9])|(1[0-2]))-(0[1-9]|[1-2][0-9]|3[0-1])\b/g;
+            let regesEmail = /\b[A-Za-zА-ЯЁа-яё]+@[A-Za-zА-ЯЁа-яё]+\.[A-Za-zА-ЯЁа-яё]+\b/gi
+            let regesLogin = /[#<>*+=;]/gi;
+
+            let visitorName = document.getElementById("visitor_name");
+            let visitorLastName = document.getElementById("visitor_last_name");
+            let visitorDate = document.getElementById("visitor_date");
+            let visitorEmail = document.getElementById("visitor_email");
+            let visitorLogin = document.getElementById("login");
+
+
+            visitorName.onkeyup=()=>{
+                visitorName.value = visitorName.value.replace(regesName,'');
+            }
+            visitorLastName.onkeyup=()=>{
+                visitorLastName.value = visitorLastName.value.replace(regesName,'');
+            }
+            visitorDate.onblur=()=>{                 //событие потеря фокуса
+                visitorDate.value = visitorDate.value.match(regesDate);
+            }
+            visitorEmail.onblur=()=>{ 
+                visitorEmail.value = visitorEmail.value.match(regesEmail);
+            }
+            visitorLogin.onkeyup=()=>{
+                visitorLogin.value = visitorLogin.value.replace(regesLogin,'');
+            }
+            
+            
+            visitorLogin.oninput=()=>{             //при вводе в input создаем ajax-запрос для проверки свободен или занят login
+                if( visitorLogin.value.length>2 ) {
                     $.ajax({
                         type:"post",//$_POST['searchLogin']
                         url:"/system/searchLogin.php",
                         data: {
-                            "searchLogin":login.value
+                            "searchLogin":visitorLogin.value
                         },
                         success:data=>{
                             searchLogin.innerHTML=data;
@@ -107,78 +136,76 @@
                 valid();
             }
         
-        signupForm.onsubmit=()=>{               ///ДОДЕЛАТЬ ВАЛИДАЦИЮ ПО ИМЯ ФАМИЛИЯ ДАТА РОЖДЕНИЯ!!!!!!!!!!!!!!!!!!!!!!!
+            signupForm.onsubmit=()=>{               
 
-            event.preventDefault();
-            if(visitor_name.value=="") {
-                searchLogin.innerHTML="Введите имя";
-                return false;
-            }
-            if(visitor_name.value=="") {
-                searchLogin.innerHTML="Введите имя";
-                return false;
-            }
-            if(visitor_last_name.value=="") {
-                searchLogin.innerHTML="Введите фамилию";
-                return false;
-            }
-            if(visitor_date.value=="") {
-                searchLogin.innerHTML="Введите дату рождения";
-                return false;
-            } 
-            if(visitor_email.value=="") {
-                searchLogin.innerHTML="Введите email";
-                return false;
-            }
-            if(login.value=="") {
-                searchLogin.innerHTML="Введите логин";
-                return false;
-            }
-            if(password.value=="") {
-                searchLogin.innerHTML="Введите пароль 1";
-                return false;
-            }
-            if(password2.value=="") {
-                searchLogin.innerHTML="Введите пароль 2";
-                return false;
-            }
-            if(password.value!==password2.value) {
-                searchLogin.innerHTML="Пароли не совпадают";
-                return false;
-            } else {
+                event.preventDefault();
+                if(visitor_name.value=="") {
+                    searchLogin.innerHTML="Введите имя";
+                    return false;
+                }
 
-                if( login.value.length>2 ) {
-                    $.ajax({
-                        type:"post",//$_POST['searchLogin']
-                        url:"/system/searchData.php",
-                        data: {
-                            "searchLogin":login.value,
-                            "searchName":visitor_name.value,
-                            "searchLastName":visitor_last_name.value,
-                            "searchEmail":visitor_email.value,
-                            "searchDate":visitor_date.value
-                        },
-                        success:data=>{
-                            searchLogin2.innerHTML=data;
-                            console.log(data);
-                        }
-                    })                
+                if(visitor_last_name.value=="") {
+                    searchLogin.innerHTML="Введите фамилию";
+                    return false;
                 }
-                else {
-                    searchLogin.innerHTML=null;
+                if(visitor_date.value=="") {
+                    searchLogin.innerHTML="Введите дату рождения";
+                    return false;
+                } 
+                if(visitor_email.value=="") {
+                    searchLogin.innerHTML="Введите email";
+                    return false;
                 }
-            
-        }
-            
+                if(visitorLogin.value=="") {
+                    searchLogin.innerHTML="Введите логин";
+                    return false;
+                }
+                if(password.value=="") {
+                    searchLogin.innerHTML="Введите пароль 1";
+                    return false;
+                }
+                if(password2.value=="") {
+                    searchLogin.innerHTML="Введите пароль 2";
+                    return false;
+                }
+                if(password.value!==password2.value) {
+                    searchLogin.innerHTML="Пароли не совпадают";
+                    return false;
+                } else {
+
+                    if( visitorLogin.value.length>2 ) {
+                        $.ajax({
+                            type:"post",//$_POST['searchLogin']
+                            url:"/system/searchData.php",
+                            data: {
+                                "searchLogin":visitorLogin.value,
+                                "searchName":visitor_name.value,
+                                "searchLastName":visitor_last_name.value,
+                                "searchEmail":visitor_email.value,
+                                "searchDate":visitor_date.value,
+                                "searchPassword":password.value,
+                                "searchPassword2":password2.value
+                            },
+                            success:data=>{
+                                searchLogin2.innerHTML=data;
+                                console.log(data);
+                            }
+                        })                
+                    }
+                    else {
+                        searchLogin.innerHTML=null;
+                    }                
+            }   
+    }
     // /////////////////доделать валидациюдл остальных полей
-        function valid() {
-            if(login.value.length<3) {
-                login.style.border="1px solid red";
+    function valid() {
+            if(visitorLogin.value.length<3) {
+                visitorLogin.style.border="1px solid red";
                 searchLogin.innerHTML="login < 3 символов";
                 error=true;
             }
             else {
-                login.style.border="1px solid green";
+                visitorLogin.style.border="1px solid green";
                 error=false;
             }
             
@@ -189,14 +216,6 @@
                 signupSend.disabled=true;
             }    
         }
-            }
-
-               
-        
-               
-        
-        
-        
        </script>
         </main>
         <footer class="footer">
