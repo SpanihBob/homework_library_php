@@ -30,7 +30,7 @@
 }
 .header_cont {
     display: grid;
-    grid-template-columns: 100px 1fr 100px 100px 100px;
+    grid-template-columns: 100px 1fr 100px 70px 70px 70px;
     gap: 10px;
     color: white;
     font-weight: bold;
@@ -63,6 +63,18 @@
     padding: 5px;
 }
 #reg_in > a {
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+}
+#exitBtnForm {
+    display: grid;
+    align-content: center;
+    justify-content: center;        
+}
+#exitBtn {
+    border: none;
+    background: none;
     color: white;
     font-weight: 600;
     cursor: pointer;
@@ -101,13 +113,15 @@
     border: 1px solid var(--secondColor);
     background: var(--firstColor);
 }
-#signupSend {    
+#signupSend, #loginSend {    
     width: 100%;
     margin-top: 10px;
     height: 30px;
     border-radius: 5px;
     border: 1px solid #c9c9c9;
 }
+
+
 
 
 

@@ -28,7 +28,7 @@
     $regesEmail = "/\b[A-Za-zА-ЯЁа-яё]+@[A-Za-zА-ЯЁа-яё]+\.[A-Za-zА-ЯЁа-яё]+\b/ui";
     $regesLogin = "/[^#<>*+=;]/ui";
 
-    $time=date();
+    $time=time();
 
     if($_POST['searchName']=="") {
         $errors[]="введите имя";
@@ -75,18 +75,18 @@
                                 `visitor_email`,
                                 `login`, 
                                 `password`, 
-                                `time_signup`) 
+                                `time_signup`
+                                ) 
         VALUES ('$_POST[searchName]',
                 '$_POST[searchLastName]',
                 '$_POST[searchDate]',
                 '$_POST[searchEmail]',
                 '$_POST[searchLogin]', 
                 '$_POST[searchPassword]',
-                '$time')");
+                '$time'
+                )");
         $_SESSION['signup']=true;
-        header('Location: login.php');  //производим переход на login.php
-     }
-        
+     }        
         echo "<span style='color:green'>Все в порядке!</span>";
     }
 ?>

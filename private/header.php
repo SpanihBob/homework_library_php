@@ -14,4 +14,7 @@
         </div>
         <a href="/profile">Профиль</a>
         <a href="/debt">Задолжности</a>
+        <form action="" method="get" name="exitBtnForm" id="exitBtnForm">
+            <input type="button" value="Выход" name="exitBtn" id="exitBtn">
+        </form>
 </div>
