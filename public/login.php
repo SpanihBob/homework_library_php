@@ -17,12 +17,12 @@
 
                 header("Location: /main");//производим переход на страницу
             }
-        //     else {
-        //         echo "неверное имя пользователя или пароль1";
-        //     }
-        // }
-        // else {
-        //     echo "неверное имя пользователя или пароль2";
+            else {
+                $_SESSION['loginError']='error';
+            }
+        }
+        else {
+            echo "неверное имя пользователя или пароль2";
         }
     }
     include_once "$path/private/head.php";  //                          #########   head  #########        
@@ -49,12 +49,13 @@
                     <span id="searchLogin">
                         <?
                             if(isset($_SESSION['signup'])) {
-                                echo "<span> Регистрация успешная </span>";
+                                echo "<span style='color:green'> Регистрация успешная </span>";
                                 $_SESSION['signup']=NULL;
                             }
-                            // if(!isset($_SESSION['login'])) {
-                            //     echo "<span> Неверное имя пользователя или пароль </span>";
-                            // }
+                            if(isset($_SESSION['loginError'])) {
+                                echo "<span style='color:red'> Неверное имя пользователя или пароль </span>";
+                                $_SESSION['loginError']=NULL;
+                            }
                         ?>
                     </span>          
                 </div>

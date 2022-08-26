@@ -1,20 +1,46 @@
-<?
-    
-?>
 
     <div class="header_cont">
         <a class="logo" href="/main">Библиотека ДЗ</a>
         <form action="" method="get" name="searchBook" class="searchBook" >
             <input type="search" name="searchBookInput" id="searchBookInput">
         </form>
-        <div id="reg_in">
-            <a href="/signup">Регистрация </a>
-            <span>/</span>
-            <a href="/login"> Вход</a>
-        </div>
-        <a href="/profile">Профиль</a>
-        <a href="/debt">Задолжности</a>
-        <form action="" method="get" name="exitBtnForm" id="exitBtnForm">
-            <input type="button" value="Выход" name="exitBtn" id="exitBtn">
-        </form>
+        
+        <?
+            if($_SESSION['login']==NULL) {
+                echo <<<html
+                        <a href="/signup">Регистрация </a>
+                        <a href="/login"> Вход</a>
+                html;
+            }
+
+            if(isset($_SESSION['login'])) {
+                echo <<<html
+                    <a href="/profile">Профиль</a>
+                    <a href="/debt">Задолжности</a>
+                    <div id="exitBtnDiv">
+                        <button id="exitBtn">Выход</button>
+                    </div>
+                html;
+            }
+        ?>
+        
 </div>
+
+<script>
+    exitBtn.onclick = () => {
+        let result = confirm("Вы точно хотите выйти?");
+        if(result != true) {
+            return false
+        } else {
+            $.ajax({
+                type: "post",
+                url:"/system/exitprofile.php",
+                data: {
+                    "exitButton": "exit"
+                },
+                success: data => window.location.href = '/main'
+            })
+        }
+    }
+
+</script>

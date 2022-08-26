@@ -1,4 +1,4 @@
-<?     
+<?   
     include_once "$path/private/head.php";  //                      #########   head  #########        
 ?>
 
