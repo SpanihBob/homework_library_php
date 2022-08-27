@@ -6,7 +6,7 @@
         </form>
         
         <?
-            if($_SESSION['login']==NULL) {
+            if(!isset($_SESSION['login'])) {
                 echo <<<html
                         <a href="/signup">Регистрация </a>
                         <a href="/login"> Вход</a>

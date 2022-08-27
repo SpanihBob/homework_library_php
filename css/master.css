@@ -150,6 +150,46 @@
     opacity: .65;
 }
 
+/* ####################             profile               #################### */
+.profileWindow {
+    display: grid;
+    width: 500px; 
+    gap: 10px; 
+    padding: 20px;
+    border: 1px solid var(--secondColor);
+    border-radius: 5px;
+    background: #8d694d24;
+}
+.profileWindow > h3 {
+    text-align: center;
+}
+.profileWindow > form {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 5px;
+    align-items: center;
+}
+.selectFileDiv {                              
+    display: grid;
+    grid-template-columns: 1fr 1fr;  
+    gap: 10PX;
+}
+.formImage > input , .selectFile, .selectFileDiv > span {
+    border-radius: 5px;
+    padding: 5px;
+    border: 1px solid var(--secondColor);
+    background: var(--firstColor);
+    cursor: pointer;
+}
+#myFile {
+    opacity: 0;
+    display: none;
+    position: absolute;
+    z-index: -1;
+}
+
+
+
 
 
 /* ####################             footer               #################### */

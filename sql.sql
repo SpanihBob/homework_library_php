@@ -27,22 +27,23 @@ CREATE TABLE IF NOT EXISTS `books` (
   `publisher` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `release_year` year(4) DEFAULT NULL,
   `front` varchar(150) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `genre` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Дамп данных таблицы web113library.books: ~4 rows (приблизительно)
-INSERT INTO `books` (`id`, `author`, `title`, `publisher`, `release_year`, `front`) VALUES
-	(1, 'Михаил Булгаков', 'Мастер и Маргарита', 'Издательский дом «ОНИКС»', '2016', '1.jpg'),
-	(2, 'Федор Михайлович Достоевский', 'Преступление и наказание', 'Издательский Дом «Интеллект»', '2018', '2.jpg'),
-	(3, 'Антуан де Сент-Экзюпери', 'Маленький принц', 'Издательский Дом «Интеллект»', '2022', '3.jpg'),
-	(4, 'Михаил Булгаков', 'Собачье сердце', 'Издательский Дом «Интеллект»', '2018', '4.jpg');
+INSERT INTO `books` (`id`, `author`, `title`, `publisher`, `release_year`, `front`, `genre`) VALUES
+	(1, 'Михаил Булгаков', 'Мастер и Маргарита', 'Издательский дом «ОНИКС»', '2016', '1.jpg', 'Классика'),
+	(2, 'Федор Михайлович Достоевский', 'Преступление и наказание', 'Издательский Дом «Интеллект»', '2018', '2.jpg', 'Классика'),
+	(3, 'Антуан де Сент-Экзюпери', 'Маленький принц', 'Издательский Дом «Интеллект»', '2022', '3.jpg', 'Детская литература'),
+	(4, 'Михаил Булгаков', 'Собачье сердце', 'Издательский Дом «Интеллект»', '2018', '4.jpg', 'Классика');
 
 -- Дамп структуры для таблица web113library.userbooks
 CREATE TABLE IF NOT EXISTS `userbooks` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `book_id` int(11) NOT NULL DEFAULT 0,
   `login_id` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `book_data_time` datetime DEFAULT NULL,
+  `book_data_time` date DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -53,7 +54,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `visitor_name` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `visitor_last_name` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `visitor_date` datetime DEFAULT NULL,
+  `visitor_date` date DEFAULT NULL,
   `visitor_email` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `login` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `password` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -61,11 +62,11 @@ CREATE TABLE IF NOT EXISTS `users` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Дамп данных таблицы web113library.users: ~6 rows (приблизительно)
+-- Дамп данных таблицы web113library.users: ~3 rows (приблизительно)
 INSERT INTO `users` (`id`, `visitor_name`, `visitor_last_name`, `visitor_date`, `visitor_email`, `login`, `password`, `time_signup`) VALUES
-	(29, 'Вася', 'Пупкин', '2003-08-01 00:00:00', 'vasiliy@yandex.ru', 'VasVas19', '$2y$10$LNtE6Ykzyc0esjMP3EFED.Tk4wlBTsYGy027PW7Rl/8UEH8FgZ7IK', 1661415688),
-	(34, 'Vova', 'Kuzin', '1993-08-02 00:00:00', 'vova@mail.ru', '222', '$2y$10$7H4jXz.TgnnzUmrckcj7FumkPVOb1yjZwDU/hNjArYC/dd7cv7fre', 1661504806),
-	(35, 'Анна', 'Иоанна', '1992-08-01 00:00:00', 'Anya@yandex.ru', '111', '$2y$10$ZW7HGH3i0tEDn90V/zUiHOnavWbgi0SKPn8LdvsBt8i/WSAbPd7Bi', 1661516130);
+	(29, 'Вася', 'Пупкин', '2003-08-01', 'vasiliy@yandex.ru', 'VasVas19', '$2y$10$LNtE6Ykzyc0esjMP3EFED.Tk4wlBTsYGy027PW7Rl/8UEH8FgZ7IK', 1661415688),
+	(34, 'Vova', 'Kuzin', '1993-08-02', 'vova@mail.ru', '222', '$2y$10$7H4jXz.TgnnzUmrckcj7FumkPVOb1yjZwDU/hNjArYC/dd7cv7fre', 1661504806),
+	(35, 'Анна', 'Иоанна', '1992-08-01', 'Anya@yandex.ru', '111', '$2y$10$ZW7HGH3i0tEDn90V/zUiHOnavWbgi0SKPn8LdvsBt8i/WSAbPd7Bi', 1661516130);
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
