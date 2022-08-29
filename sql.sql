@@ -32,6 +32,7 @@ CREATE TABLE IF NOT EXISTS `books` (
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Дамп данных таблицы web113library.books: ~4 rows (приблизительно)
+DELETE FROM `books`;
 INSERT INTO `books` (`id`, `author`, `title`, `publisher`, `release_year`, `front`, `genre`) VALUES
 	(1, 'Михаил Булгаков', 'Мастер и Маргарита', 'Издательский дом «ОНИКС»', '2016', '1.jpg', 'Классика'),
 	(2, 'Федор Михайлович Достоевский', 'Преступление и наказание', 'Издательский Дом «Интеллект»', '2018', '2.jpg', 'Классика'),
@@ -48,6 +49,7 @@ CREATE TABLE IF NOT EXISTS `userbooks` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Дамп данных таблицы web113library.userbooks: ~0 rows (приблизительно)
+DELETE FROM `userbooks`;
 
 -- Дамп структуры для таблица web113library.users
 CREATE TABLE IF NOT EXISTS `users` (
@@ -59,14 +61,16 @@ CREATE TABLE IF NOT EXISTS `users` (
   `login` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `password` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `time_signup` int(11) DEFAULT NULL,
+  `avatar` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Дамп данных таблицы web113library.users: ~3 rows (приблизительно)
-INSERT INTO `users` (`id`, `visitor_name`, `visitor_last_name`, `visitor_date`, `visitor_email`, `login`, `password`, `time_signup`) VALUES
-	(29, 'Вася', 'Пупкин', '2003-08-01', 'vasiliy@yandex.ru', 'VasVas19', '$2y$10$LNtE6Ykzyc0esjMP3EFED.Tk4wlBTsYGy027PW7Rl/8UEH8FgZ7IK', 1661415688),
-	(34, 'Vova', 'Kuzin', '1993-08-02', 'vova@mail.ru', '222', '$2y$10$7H4jXz.TgnnzUmrckcj7FumkPVOb1yjZwDU/hNjArYC/dd7cv7fre', 1661504806),
-	(35, 'Анна', 'Иоанна', '1992-08-01', 'Anya@yandex.ru', '111', '$2y$10$ZW7HGH3i0tEDn90V/zUiHOnavWbgi0SKPn8LdvsBt8i/WSAbPd7Bi', 1661516130);
+DELETE FROM `users`;
+INSERT INTO `users` (`id`, `visitor_name`, `visitor_last_name`, `visitor_date`, `visitor_email`, `login`, `password`, `time_signup`, `avatar`) VALUES
+	(29, 'Вася', 'Пупкин', '2003-08-01', 'vasiliy@yandex.ru', 'VasVas19', '$2y$10$LNtE6Ykzyc0esjMP3EFED.Tk4wlBTsYGy027PW7Rl/8UEH8FgZ7IK', 1661415688, NULL),
+	(34, 'Vova', 'Kuzin', '1993-08-02', 'vova@mail.ru', '222', '$2y$10$7H4jXz.TgnnzUmrckcj7FumkPVOb1yjZwDU/hNjArYC/dd7cv7fre', 1661504806, NULL),
+	(35, 'Анна', 'Иоанна', '1992-08-01', 'Anya@yandex.ru', '111', '$2y$10$m2JfIvRdTtrgPu5BA34LoOiZh1XtZJkxd25qcvi7Ppiu2GGwSlJCy', 1661516130, '11197609.jpg');
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

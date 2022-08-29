@@ -14,6 +14,8 @@
                 $_SESSION['auth']=true;
                 $_SESSION['login'] = $_POST['login'];
                 $_SESSION['id'] = $seLogin['id'];
+                $_SESSION['avatar'] = "$path/download/$seLogin[avatar]";
+                
 
                 header("Location: /main");//производим переход на страницу
             }

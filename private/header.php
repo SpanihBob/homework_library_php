@@ -18,7 +18,7 @@
                     <a href="/profile">Профиль</a>
                     <a href="/debt">Задолжности</a>
                     <div id="exitBtnDiv">
-                        <button id="exitBtn">Выход</button>
+                        <button id="exitBtn">Выход</span></button>
                     </div>
                 html;
             }
