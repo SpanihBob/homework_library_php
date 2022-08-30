@@ -20,6 +20,12 @@
 .container > :nth-child(2n-1) {    /* обращаемся к нечетным дочерним элементам */
     background: var(--secondColor);
  }
+ main {
+    display: grid;
+    min-height: 100%;
+    width: 1000px;
+    margin: auto;
+ }
 
 
 /* ####################             header               #################### */
@@ -187,9 +193,95 @@
     position: absolute;
     z-index: -1;
 }
+.img_profile {
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    grid-template-columns: 1fr 2fr;
+}
+.img_profile > :nth-child(1) {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    margin: auto;
+    overflow: hidden;
+    box-shadow: 1px 1px 1px gray;
+}
+.img_profile > :nth-child(1) > img {
+    width: 95px;
+    margin: auto;
+
+}
+.img_profile > :nth-child(2) {
+    display: grid;
+    align-content: center;
+}
+.img_profile > :nth-child(2) > span {    
+    font-size: 1.3rem;
+    font-weight: 600;
+}
 
 
-
-
+/* ####################             main.php               #################### */
+#bookCont {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto;
+}
+#bookInfoCont {
+    display: none;
+    justify-content: center;
+    align-content: center;
+}
+.fullParentDiv {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 20px;
+}
+.main_book {
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    width: 250px;
+    height: 310px;
+}
+.bookImgDiv {
+    height: 250px;
+    box-shadow: 2px 2px 2px gray;
+}
+.bookImgDiv > img {
+    height: 100%;
+}
+.bookImgDiv > div {
+    display: grid;
+    justify-content: center;
+}
+.fullInfoNewDivPoster {
+    display: grid;
+    justify-content: center;
+    align-content: center;
+}
+.newInfo {
+    display: grid;
+    justify-content: center;
+    align-content: start;
+    grid-template-rows: 30px auto;
+    gap: 15px;
+}
+.newInfo > div, .newInfo > div > span {
+    font-size: 1.2rem;
+}
+.newInfo > input {
+    font-size: 1.2rem;
+    border-radius: 5px;
+    padding: 5px;
+    border: 1px solid var(--secondColor);
+    background: var(--firstColor);
+    box-shadow: 1px 1px 1px gray;
+    cursor: pointer;
+}
 
 /* ####################             footer               #################### */

@@ -68,10 +68,19 @@
             <div class="signup">
                 <div class="profileWindow">
                     <h3>Личный профиль</h3>
-                    <div><img src="<?echo $_SESSION['avatarForImg']?>" alt=""> Login: 
-                        <?
-                            echo $_SESSION['login'];
-                        ?>
+                    <div class="img_profile">
+                        <div>
+                            <img src="<?echo $_SESSION['avatarForImg']?>" alt="">
+                        </div>
+                        <span>
+                            <span>
+                                Login:
+                                <?
+                                    echo $_SESSION['login'];
+                                ?>
+                            </span>
+                            
+                        </span>                         
                     </div>
                     <form action="" method="post" enctype="multipart/form-data" class="formImage" id="profileForm">
                         <div>Изменить пароль:</div>
