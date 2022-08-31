@@ -68,15 +68,16 @@ CREATE TABLE IF NOT EXISTS `users` (
   `password` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `time_signup` int(11) DEFAULT NULL,
   `avatar` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `favorites` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Дамп данных таблицы web113library.users: ~3 rows (приблизительно)
 DELETE FROM `users`;
-INSERT INTO `users` (`id`, `visitor_name`, `visitor_last_name`, `visitor_date`, `visitor_email`, `login`, `password`, `time_signup`, `avatar`) VALUES
-	(29, 'Вася', 'Пупкин', '2003-08-01', 'vasiliy@yandex.ru', 'VasVas19', '$2y$10$LNtE6Ykzyc0esjMP3EFED.Tk4wlBTsYGy027PW7Rl/8UEH8FgZ7IK', 1661415688, NULL),
-	(34, 'Vova', 'Kuzin', '1993-08-02', 'vova@mail.ru', '222', '$2y$10$7H4jXz.TgnnzUmrckcj7FumkPVOb1yjZwDU/hNjArYC/dd7cv7fre', 1661504806, NULL),
-	(35, 'Анна', 'Иоанна', '1992-08-01', 'Anya@yandex.ru', '111', '$2y$10$m2JfIvRdTtrgPu5BA34LoOiZh1XtZJkxd25qcvi7Ppiu2GGwSlJCy', 1661516130, '11197609.jpg');
+INSERT INTO `users` (`id`, `visitor_name`, `visitor_last_name`, `visitor_date`, `visitor_email`, `login`, `password`, `time_signup`, `avatar`, `favorites`) VALUES
+	(29, 'Вася', 'Пупкин', '2003-08-01', 'vasiliy@yandex.ru', 'VasVas19', '$2y$10$LNtE6Ykzyc0esjMP3EFED.Tk4wlBTsYGy027PW7Rl/8UEH8FgZ7IK', 1661415688, NULL, NULL),
+	(34, 'Vova', 'Kuzin', '1993-08-02', 'vova@mail.ru', '222', '$2y$10$7H4jXz.TgnnzUmrckcj7FumkPVOb1yjZwDU/hNjArYC/dd7cv7fre', 1661504806, NULL, NULL),
+	(35, 'Анна', 'Иоанна', '1992-08-01', 'Anya@yandex.ru', '111', '$2y$10$m2JfIvRdTtrgPu5BA34LoOiZh1XtZJkxd25qcvi7Ppiu2GGwSlJCy', 1661516130, '11197609.jpg', '3,8,5,7,2,6');
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
