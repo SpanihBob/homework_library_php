@@ -1,4 +1,5 @@
-<?   
+<?  
+
     include_once "$path/private/head.php";  //                      #########   head  #########        
 ?>
 
@@ -8,19 +9,18 @@
             <? include_once "$path/private/header.php"; ?>  <!--        #########   header  #########    -->
         </header> 
         <main>
-            <div id="bookCont"></div>
-            <div id="bookInfoCont"></div>
+            <div id="bookContFavoritPage"></div>
+            <div id="bookInfoContFavoritPage"></div>
         </main>
         <footer class="footer">
             <? include_once "$path/private/footer.php"?>
         </footer>
     </div>
-
     <script>
-        function ShowBooks() {            
-            fetch(`/system/postbooks.php`)                          //подключаемся к файлу /system/postbooks.php                
+        function ShowFavoritBooks() {            
+            fetch(`/system/postFavoritBooks.php`)                          //подключаемся к файлу /system/postFavoritBooks.php                
                 .then(response => response.json())                  // в случае успеха преобразуем ответ от этого файла в json                 
-                .then(data => {                                     //в случае успешного перевода в текст преобразованую инф выводим в чат 
+                .then(data => {                                     //в случае успешного перевода в текст преобразованую инф выводим в чат
                     for(let i = 0; i < data.length; i++) {
                         const bookId = data[i].id;
 
@@ -36,29 +36,29 @@
                         else {
                             status.innerHTML = "<span style='color:red'>Нет в наличии</span>"
                         }
-
+                        
                         newDiv.classList.add("main_book");                   //добавляем класс
                         newDivPoster.classList.add("bookImgDiv");
                         
                         bookPoster.setAttribute("src",`../img/${data[i].front}`);      // добавим атрибут
                         bookPoster.setAttribute("data-id",data[i].id); 
                         
-                        bookPoster.id = "image";
+                        bookPoster.id = "imageFavoritPage";
                         
                         newDivPoster.appendChild(bookPoster);           // вставляем дочерние элементы в родителя'
                         newDivPoster.appendChild(status);           // вставляем дочерние элементы в родителя'
 
                         newDiv.appendChild(newDivPoster);                        
                         
-                        bookCont.appendChild(newDiv);                   //выводим книги на экран
+                        bookContFavoritPage.appendChild(newDiv);                   //выводим книги на экран
 
-                        
+       
 
-                        bookCont.onclick = (event) => {
-                            if(event.target.id == "image") {
+                        bookContFavoritPage.onclick = (event) => {
+                            if(event.target.id == "imageFavoritPage") {
                                 const selectedBookId = event.target.getAttribute("data-id");
-                                bookCont.style.display = "none";
-                                bookInfoCont.style.display = "grid";
+                                bookContFavoritPage.style.display = "none";
+                                bookInfoContFavoritPage.style.display = "grid";
 
                                 const fullParentDiv = document.createElement('div');
 
@@ -127,15 +127,15 @@
                                 fullParentDiv.appendChild(fullInfoNewDivPoster);
                                 fullParentDiv.appendChild(newInfo);
 
-                                bookInfoCont.appendChild(fullParentDiv);
+                                bookInfoContFavoritPage.appendChild(fullParentDiv);
 
 
                                 backBtn.onclick = () => {               //при нажатии кнопки "назад" меняем стили родителей иудаляем все дочерние элементы из bookInfoCont
-                                    bookCont.style.display = "grid";
-                                    bookInfoCont.style.display = "none";
+                                    bookContFavoritPage.style.display = "grid";
+                                    bookInfoContFavoritPage.style.display = "none";
 
                                     while (bookInfoCont.firstChild) {
-                                        bookInfoCont.removeChild(bookInfoCont.firstChild);
+                                        bookInfoContFavoritPage.removeChild(bookInfoCont.firstChild);
                                     }
                                 }
 
@@ -155,19 +155,15 @@
                                 }
                             }
                         }
-                        
-                    
                     }
-                        
-
                     }
                 ).catch(()=>{      //в случау ошибки, т.е. если не будут приняты данные
                     console.log("Новых данных нет");
                 }) 
-            
-        }
-        ShowBooks();
+        }   
+        ShowFavoritBooks();
     </script>
+
 	
 </body>
 </html> 

@@ -40,6 +40,9 @@
     
     elseif($_SERVER['REDIRECT_URL']=="/debt"):
         require_once "$path/public/debt.php";
+
+    elseif($_SERVER['REDIRECT_URL']=="/favorites"):
+        require_once "$path/public/favorites.php";
             
     else:
         require_once "$path/public/404.php";

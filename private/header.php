@@ -17,6 +17,7 @@
                 echo <<<html
                     <a href="/profile">Профиль</a>
                     <a href="/debt">Задолжности</a>
+                    <a href="/favorites">&#x2764;&#xfe0e;</a>
                     <div id="exitBtnDiv">
                         <button id="exitBtn">Выход</span></button>
                     </div>
